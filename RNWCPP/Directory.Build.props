@@ -31,6 +31,11 @@
     <YogaDir>$(ReactNativeWindowsDir)node_modules\react-native\ReactCommon\yoga</YogaDir>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <ReactNativeProjectDir>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), app.json))</ReactNativeProjectDir>
+  </PropertyGroup>
+  <Import Project="$(ReactNativeProjectDir)\windows\react.overrides.props" Condition="$([System.IO.File]::Exists($(ReactNativeProjectDir)\windows\react.overrides.props))" />
+
 <!-- Uncomment this (and modify the path below) to build react-native-win against a public version of react-native -->
 <!--
   <PropertyGroup>
